@@ -22,30 +22,22 @@ public class GridStaticConroller {
     @GetMapping("/get")
     public GirdData getGrid() throws Exception {
         System.out.println(" -- Called getGrid with empty Message -- ");
-
         return this.gridController.currentGrid;
     }
 
     @PostMapping("/set")
     public GirdData setGrid(@RequestBody SetGridMessage message) throws Exception {
         System.out.println(" -- Called setGrid -- ");
+        checkPassword(message.getPassword());
         if(message.getGrid().length > 0)
             return this.gridController.setGrid(message);
         throw new Exception("length was too small, requires length > 0");
     }
 
-    @GetMapping("/random")
-    public SetGridMessage randomGrid() throws Exception {
-        System.out.println(" -- Called randomGrid with empty Message -- ");
-        SetGridMessage m = new SetGridMessage();
-        m.setGrid(new int[][] {{1,2,3,4},{1,2,3,4},{1,2,3,4},{1,2,3,4}});
-
-        return m;
-    }
-
     @PostMapping("/resize")
     public GirdData resizeGrid(@RequestBody ResizeMessage message) throws Exception {
         System.out.println(" -- Called resizeGrid with " + message.getWidth() + "x" + message.getHeight() + " -- ");
+        checkPassword(message.getPassword());
         if(message.getWidth() > 0)
             return this.gridController.resizeGrid(message);
         throw new Exception("width was too small, requires width > 0");
@@ -54,6 +46,15 @@ public class GridStaticConroller {
     @PostMapping("/fill_area")
     public int fillAreaGrid(@RequestBody FillAreaMessage message) throws Exception {
         System.out.println(" -- Called fillAreaGrid with -- ");
+        checkPassword(message.getPassword());
         return this.gridController.fillArea(message);
     }
+
+    public void checkPassword(String passwordAttempt) throws  Exception {
+        if(! passwordAttempt.equals(System.getenv("PROTECTED_METHOD_PASSWORD"))){
+            throw new Exception("password was incorrect");
+        }
+        System.out.println("PASSWORD OK");
+    }
+
 }

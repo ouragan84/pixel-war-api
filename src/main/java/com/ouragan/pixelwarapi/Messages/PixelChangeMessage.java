@@ -6,6 +6,16 @@ public class PixelChangeMessage {
     private int y;
     private int color;
 
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public PixelChangeMessage(int x, int y, int color) {
         this.x = x;
         this.y = y;
