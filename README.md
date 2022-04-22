@@ -15,4 +15,4 @@ You will also need to set the different environment variables in your IDE, which
  - `PSQL_DATABASE_URL` the url (including port) to access your DB
  - `PSQL_DATABASE_USERNAME` the username to access your DB (don't forget to give it permission)
  - `PSQL_DATABASE_PASSWORD` the password of the user you chose
- - `PROTECTED_METHOD_PASSWORD` a String you get to pick, is needed to protect sensitive post methods to random users
+ - `PROTECTED_METHOD_PASSWORD` a String you get to pick, is needed to protect sensitive post methods from random users
