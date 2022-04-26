@@ -23,4 +23,4 @@ You will also need to set the different environment variables in your IDE, which
  - `$URL$/grid/resize` POST method, resizes and returns the current grid, body message structure: `{width (int), height (int), password (String)}`, response object structure: `{id (Long), Grid (int[][]), height (int), width (int)}`
  - `$URL$/grid/fill_area` POST method, fills rectangular area with selected color and returns number of pixels overwirtten, body message structure: `{x1 (int), y1 (int), x2 (int), y2 (int), fillColor (int), password (String)}`, response object structure: `int` 
 
-Thank you very muchf
+Thank you very much!
