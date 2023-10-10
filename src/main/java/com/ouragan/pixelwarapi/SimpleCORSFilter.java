@@ -11,12 +11,11 @@ import java.io.IOException;
 @Component
 public class SimpleCORSFilter implements Filter {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(SimpleCORSFilter.class);
+    // private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(SimpleCORSFilter.class);
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        LOGGER.info("Initilisation du Middleware");
-        System.out.println("Initilisation du Middleware");
+        System.out.println("Middleware Initilisation");
     }
 
     @Override
@@ -26,8 +25,9 @@ public class SimpleCORSFilter implements Filter {
         HttpServletRequest requestToUse = (HttpServletRequest)servletRequest;
         HttpServletResponse responseToUse = (HttpServletResponse)servletResponse;
 
-        responseToUse.setHeader("Access-Control-Allow-Origin", "*");
-	responseToUse.setHeader("Access-Control-Allow-Methods","*");
+        String origin = requestToUse.getHeader("Origin");
+        responseToUse.setHeader("Access-Control-Allow-Origin", origin);
+	    responseToUse.setHeader("Access-Control-Allow-Methods","*");
         responseToUse.setHeader("Access-Control-Allow-Credentials", "true");
         responseToUse.setHeader("Access-Control-Allow-Headers", "*");
         filterChain.doFilter(requestToUse,responseToUse);

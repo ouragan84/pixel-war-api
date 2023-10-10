@@ -13,7 +13,7 @@ import java.util.List;
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
-    private final List<String> allowedAdressesList = Arrays.asList("*", "https://pixel.edgarbaudry.dev"); //, "https://pixel-war.netlify.app" "http://localhost:3000", "http://localhost:3001", "http://localhost:3002"
+    private final List<String> allowedAdressesList = Arrays.asList("http://localhost:3000", "http://localhost:5002", "https://pixel.edgarbaudry.dev");
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
