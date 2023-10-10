@@ -26,7 +26,8 @@ public class SimpleCORSFilter implements Filter {
         HttpServletRequest requestToUse = (HttpServletRequest)servletRequest;
         HttpServletResponse responseToUse = (HttpServletResponse)servletResponse;
 
-        responseToUse.setHeader("Access-Control-Allow-Origin", requestToUse.getHeader("Origin"));
+        responseToUse.setHeader("Access-Control-Allow-Origin", "*");
+	responseToUse.setHeader("Access-Control-Allow-Methods","*");
         responseToUse.setHeader("Access-Control-Allow-Credentials", "true");
         responseToUse.setHeader("Access-Control-Allow-Headers", "*");
         filterChain.doFilter(requestToUse,responseToUse);
